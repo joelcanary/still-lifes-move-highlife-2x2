@@ -1,6 +1,6 @@
 # Eleven new OEIS terms: strict still lifes in Move, HighLife and 2x2
 
-[![tests](https://github.com/joelcanary/still-life-enumeration/actions/workflows/test.yml/badge.svg)](https://github.com/joelcanary/still-life-enumeration/actions/workflows/test.yml)
+[![tests](https://github.com/joelcanary/still-lifes-move-highlife-2x2/actions/workflows/test.yml/badge.svg)](https://github.com/joelcanary/still-lifes-move-highlife-2x2/actions/workflows/test.yml)
 
 Eleven terms added to three sequences of the [On-Line Encyclopedia of Integer Sequences](https://oeis.org) that count **strict still lifes** in Life-like cellular automata, approved by the OEIS editors in November 2026, together with the two independent C programs that computed them, the per-box data behind every term and a test suite.
 
