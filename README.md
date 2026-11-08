@@ -1,8 +1,8 @@
-# Still life enumeration for Life-like cellular automata
+# Eleven new OEIS terms: strict still lifes in Move, HighLife and 2x2
 
 [![tests](https://github.com/joelcanary/still-life-enumeration/actions/workflows/test.yml/badge.svg)](https://github.com/joelcanary/still-life-enumeration/actions/workflows/test.yml)
 
-Two independent C programs that count **strict still lifes** in Life-like cellular automata, and the eleven new terms they produced for three sequences of the [On-Line Encyclopedia of Integer Sequences](https://oeis.org). The OEIS editors approved all eleven in November 2026.
+Eleven terms added to three sequences of the [On-Line Encyclopedia of Integer Sequences](https://oeis.org) that count **strict still lifes** in Life-like cellular automata, approved by the OEIS editors in November 2026, together with the two independent C programs that computed them, the per-box data behind every term and a test suite.
 
 <p align="center"><img src="figures/gallery-move.gif" alt="Every strict still life of the Move rule with 11 to 15 cells, one frame per size" width="760"></p>
 
