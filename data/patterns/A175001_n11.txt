@@ -1,0 +1,6 @@
+5x5: ...O. .OOO. .O.OO OOO.. ..O..
+5x5: .OO.. ..O.. .OOOO O.O.O .O...
+5x5: ...OO ...O. ..OOO OOO.. O.O..
+5x5: ..OO. ...O. ..OOO OOO.. O.O..
+6x4: ...O.O ..O.OO OOOO.. O..O..
+6x6: .....O ...OOO ...O.. .OOO.. .O.... OO....

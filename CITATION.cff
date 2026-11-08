@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use these programs or data, please cite them as below."
+title: "Still life enumeration for Life-like cellular automata"
+type: software
+authors:
+  - family-names: "Cruz Cabrera"
+    given-names: "Joel"
+    orcid: "https://orcid.org/0009-0005-4048-1237"
+license: MIT
+repository-code: "https://github.com/joelcanary/still-life-enumeration"
+keywords:
+  - cellular automata
+  - still lifes
+  - OEIS
+  - enumeration
+references:
+  - type: generic
+    title: "A175001: Number of stable n-celled patterns (still lifes) in the Move cellular automaton"
+    url: "https://oeis.org/A175001"
+  - type: generic
+    title: "A175000: Number of stable n-celled patterns (still lifes) in the HighLife cellular automaton"
+    url: "https://oeis.org/A175000"
+  - type: generic
+    title: "A166476: Number of stable n-celled patterns (still lifes) in the 2x2 cellular automaton"
+    url: "https://oeis.org/A166476"
