@@ -72,6 +72,16 @@ for key in $(awk '{print $1}' data/terms.txt); do
   else fail "$key: the two programs disagree on some box"; fi
 done
 
+# Terms whose two runs agree on the total but were not split by box (README, note †): each must
+# match its b-file, and must not also be listed as box-checked in data/terms.txt.
+while read -r key want; do
+  [ -n "$key" ] || continue
+  seq=${key%_n*}; n=${key##*_n}
+  got=$(awk -v n="$n" '$1 == n {print $2}' "data/b$(printf '%s' "$seq" | sed 's/^A//').txt")
+  if [ "$got" = "$want" ]; then pass "$key: total $want matches the b-file (agreement on the total only)"; else fail "$key: total $want, b-file says ${got:-nothing}"; fi
+  if grep -q "^$key " data/terms.txt; then fail "$key: listed both as total-only and as box-checked"; fi
+done < data/totals.txt
+
 echo
 if [ "$fails" -eq 0 ]; then echo "all tests passed"; else echo "$fails test(s) failed"; fi
 exit "$fails"

@@ -1,8 +1,8 @@
-# Eleven new OEIS terms: strict still lifes in Move, HighLife and 2x2
+# Twelve new OEIS terms: strict still lifes in Move, HighLife and 2x2
 
 [![tests](https://github.com/joelcanary/still-lifes-move-highlife-2x2/actions/workflows/test.yml/badge.svg)](https://github.com/joelcanary/still-lifes-move-highlife-2x2/actions/workflows/test.yml)
 
-Eleven terms added to three sequences of the [On-Line Encyclopedia of Integer Sequences](https://oeis.org) that count **strict still lifes** in Life-like cellular automata, approved by the OEIS editors in November 2026, together with the two independent C programs that computed them, the per-box data behind every term and a test suite.
+Twelve terms added to three sequences of the [On-Line Encyclopedia of Integer Sequences](https://oeis.org) that count **strict still lifes** in Life-like cellular automata, approved by the OEIS editors in November 2026, together with the two independent C programs that computed them, the per-box data behind every term and a test suite.
 
 <p align="center"><img src="figures/gallery-move.gif" alt="Every strict still life of the Move rule with 11 to 15 cells, one frame per size" width="760"></p>
 
@@ -11,10 +11,12 @@ Eleven terms added to three sequences of the [On-Line Encyclopedia of Integer Se
 | Sequence | Rule | Known before | Added | Values |
 |---|---|---|---|---|
 | [A175001](https://oeis.org/A175001) | Move, B368/S245 | a(1)–a(10) | a(11)–a(17) | 6, 10, 18, 49, 103, 228, 376 |
-| [A175000](https://oeis.org/A175000) | HighLife, B36/S23 | a(1)–a(13) | a(14)–a(16) | 540, 1187, 2872 |
+| [A175000](https://oeis.org/A175000) | HighLife, B36/S23 | a(1)–a(13) | a(14)–a(17) | 540, 1187, 2872, 6663&nbsp;† |
 | [A166476](https://oeis.org/A166476) | 2x2, B36/S125 | a(1)–a(10) | a(11) | 322 |
 
 None of the three had gained a term since 2010. The full sequences are in [`data/`](data) as b-files, identical to what the OEIS serves today.
+
+† a(17) = 6663 of A175000 (published on 9 November 2026) was computed in a single run per program rather than split by box. Both programs return 6663, and both reproduce a(14) = 540 in the same run as a guard, so the two agree on the total; there are no per-box files for it yet. It is therefore listed in [`data/totals.txt`](data/totals.txt), not with the others in [`data/boxes/`](data/boxes).
 
 <p align="center"><img src="figures/terms.png" alt="Number of strict still lifes against the number of cells, on a log scale, for the three sequences; hollow markers are the terms already in the OEIS, filled markers the ones added" width="760"></p>
 
@@ -40,13 +42,13 @@ Inside each box the two programs share nothing else:
 | Rotations and reflections | keeps only the smallest of the transforms | canonical form stored in a hash table |
 | Strictness | backtracking search for a stable split of the islands | brute force over every split of the islands |
 
-Every count is split by box size, and the two programs must agree on **every box**, not just on the total. The per-box counts for all eleven new terms are in [`data/boxes/`](data/boxes).
+Every count is split by box size, and the two programs must agree on **every box**, not just on the total. The per-box counts for eleven of the twelve new terms are in [`data/boxes/`](data/boxes); the twelfth (†) is checked on the total only.
 
 <p align="center"><img src="figures/boxes-A175001-n17.png" alt="Heat map of how many of the 376 strict still lifes of A175001 with 17 cells fall in each box size" width="640"></p>
 
 ## Verification
 
-- **Two programs, every box.** For each of the eleven new terms, both programs return the same count in every box. [`tests/run.sh`](tests/run.sh) checks this from the stored files.
+- **Two programs, every box.** For eleven of the twelve new terms, both programs return the same count in every box. [`tests/run.sh`](tests/run.sh) checks this from the stored files. For A175000 a(17) they agree on the total, and the test checks that this term matches the b-file and has not been filed as a box-checked one.
 - **Published terms reproduced.** Both programs reproduce every term these entries already had, and the related ones too: A175001 to a(10), A175000 to a(13), A166476 to a(10), [A175002](https://oeis.org/A175002) (Maze) to a(9) and [A019473](https://oeis.org/A019473) (Conway) to a(15). The test suite recomputes the smaller of these on every run.
 - **Every pattern drawn here is re-checked.** [`scripts/make_figures.py`](scripts/make_figures.py) simulates one generation of each pattern before drawing it and refuses any that changes.
 
