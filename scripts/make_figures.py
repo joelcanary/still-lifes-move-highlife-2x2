@@ -96,8 +96,9 @@ def figure_terms():
         ax.annotate(f"{a}  {name}\na({n_end}) = {v_end:,}", (n_end, v_end), xytext=(10, 0),
                     textcoords="offset points", va="center", fontsize=9.5, color=INK)
     ax.set_yscale("log")
-    ax.set_xlim(0.5, 20.8)
-    ax.set_xticks(range(1, 18))
+    n_max = max(n for a, *_ in SEQUENCES for n, _ in bfile(a))   # the axis follows the b-files, not a typed limit
+    ax.set_xlim(0.5, n_max + 3.8)
+    ax.set_xticks(range(1, n_max + 1))
     ax.set_xlabel("n (live cells)", color=INK_SOFT, fontsize=10.5)
     ax.set_ylabel("strict still lifes with n cells", color=INK_SOFT, fontsize=10.5)
     hollow = plt.Line2D([], [], marker="o", linestyle="", markerfacecolor=SURFACE, markeredgecolor=INK_SOFT, markersize=7, label="already in the OEIS")

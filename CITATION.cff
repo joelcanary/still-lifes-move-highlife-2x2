@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use these programs or data, please cite them as below."
-title: "Twelve new OEIS terms: strict still lifes in Move, HighLife and 2x2"
+title: "Thirteen new OEIS terms: strict still lifes in Move, HighLife and 2x2"
 type: software
 authors:
   - family-names: "Cruz Cabrera"

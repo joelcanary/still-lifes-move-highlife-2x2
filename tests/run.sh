@@ -71,6 +71,13 @@ for key in $(awk '{print $1}' data/terms.txt); do
   if [ "$(sort -n -k2 -k1 "data/boxes/${key}_stilllife.txt")" = "$(sort -n -k2 -k1 "data/boxes/${key}_crosscheck.txt")" ]; then pass "$key: both programs agree on every box"
   else fail "$key: the two programs disagree on some box"; fi
 done
+# Each new term is also the value the b-file (what the OEIS serves) has at that index.
+while read -r key want; do
+  [ -n "$key" ] || continue
+  seq=${key%_n*}; n=${key##*_n}
+  got=$(awk -v n="$n" '$1 == n {print $2}' "data/b$(printf '%s' "$seq" | sed 's/^A//').txt")
+  if [ "$got" = "$want" ]; then pass "$key: $want matches the b-file"; else fail "$key: $want, b-file says ${got:-nothing}"; fi
+done < data/terms.txt
 
 echo
 if [ "$fails" -eq 0 ]; then echo "all tests passed"; else echo "$fails test(s) failed"; fi
