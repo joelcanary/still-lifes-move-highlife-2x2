@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use these programs or data, please cite them as below."
-title: "Thirteen new OEIS terms: strict still lifes in Move, HighLife and 2x2"
+title: "Fourteen new OEIS terms: strict still lifes in Move, HighLife, 2x2 and Maze"
 type: software
 authors:
   - family-names: "Cruz Cabrera"
@@ -23,3 +23,6 @@ references:
   - type: generic
     title: "A166476: Number of stable n-celled patterns (still lifes) in the 2x2 cellular automaton"
     url: "https://oeis.org/A166476"
+  - type: generic
+    title: "A175002: Number of stable n-celled patterns (still lifes) in the Maze (B3/S12345) cellular automaton"
+    url: "https://oeis.org/A175002"

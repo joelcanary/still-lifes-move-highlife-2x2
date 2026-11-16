@@ -25,8 +25,10 @@ SEQUENCES = [  # (A-number, rule name, rule, terms the entry had before this wor
     ("A175001", "Move", "B368/S245", 10, "#2a78d6", "o"),
     ("A175000", "HighLife", "B36/S23", 13, "#eb6834", "s"),
     ("A166476", "2x2", "B36/S125", 10, "#1baf7a", "D"),
+    ("A175002", "Maze", "B3/S12345", 9, "#7b4fc9", "^"),
 ]
-RULES = {"B368/S245": ({3, 6, 8}, {2, 4, 5}), "B36/S23": ({3, 6}, {2, 3}), "B36/S125": ({3, 6}, {1, 2, 5})}
+RULES = {"B368/S245": ({3, 6, 8}, {2, 4, 5}), "B36/S23": ({3, 6}, {2, 3}), "B36/S125": ({3, 6}, {1, 2, 5}),
+         "B3/S12345": ({3}, {1, 2, 3, 4, 5})}
 
 
 def bfile(a):
@@ -104,7 +106,7 @@ def figure_terms():
     hollow = plt.Line2D([], [], marker="o", linestyle="", markerfacecolor=SURFACE, markeredgecolor=INK_SOFT, markersize=7, label="already in the OEIS")
     solid = plt.Line2D([], [], marker="o", linestyle="", color=INK_SOFT, markersize=7, label="added in November 2026")
     ax.legend(handles=[hollow, solid], loc="upper left", frameon=False, fontsize=10, labelcolor=INK)
-    ax.set_title("Three OEIS sequences, extended", loc="left", color=INK, fontsize=13, fontweight="bold")
+    ax.set_title("Four OEIS sequences, extended", loc="left", color=INK, fontsize=13, fontweight="bold")
     fig.tight_layout()
     fig.savefig(FIG / "terms.png", facecolor=SURFACE)
     plt.close(fig)
