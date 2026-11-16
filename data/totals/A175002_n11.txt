@@ -1,0 +1,4 @@
+# A175002 a(11), Maze B3/S12345. Each program was run once over all the boxes, not split
+# with scripts/count.sh, so only the two totals are recorded. Format: program total
+stilllife 10520
+crosscheck 10520

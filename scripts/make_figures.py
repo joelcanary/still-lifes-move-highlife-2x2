@@ -108,7 +108,7 @@ def figure_terms():
     ax.legend(handles=[hollow, solid], loc="upper left", frameon=False, fontsize=10, labelcolor=INK)
     ax.set_title("Four OEIS sequences, extended", loc="left", color=INK, fontsize=13, fontweight="bold")
     fig.tight_layout()
-    fig.savefig(FIG / "terms.png", facecolor=SURFACE)
+    fig.savefig(FIG / "terms.png", facecolor=SURFACE, metadata={"Software": None})
     plt.close(fig)
 
 
@@ -146,7 +146,7 @@ def figure_boxes():
     ax.set_title(f"A175001, n = 17: {sum(c for _, _, c in hit)} still lifes in {len(hit)} box sizes",
                  loc="left", color=INK, fontsize=12, fontweight="bold")
     fig.tight_layout()
-    fig.savefig(FIG / "boxes-A175001-n17.png", facecolor=SURFACE)
+    fig.savefig(FIG / "boxes-A175001-n17.png", facecolor=SURFACE, metadata={"Software": None})
     plt.close(fig)
 
 

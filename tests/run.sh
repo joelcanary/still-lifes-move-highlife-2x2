@@ -67,10 +67,19 @@ for f in data/boxes/*.txt; do
   want=$(awk -v k="$key" '$1 == k {print $2}' data/terms.txt)
   if [ -n "$want" ] && [ "$sum" = "$want" ]; then pass "$name: boxes add up to $want"; else fail "$name: boxes add up to $sum, expected $want"; fi
 done
-for key in $(awk '{print $1}' data/terms.txt); do
-  if [ "$(sort -n -k2 -k1 "data/boxes/${key}_stilllife.txt")" = "$(sort -n -k2 -k1 "data/boxes/${key}_crosscheck.txt")" ]; then pass "$key: both programs agree on every box"
-  else fail "$key: the two programs disagree on some box"; fi
-done
+while read -r key want; do
+  [ -n "$key" ] || continue
+  if [ -f "data/boxes/${key}_stilllife.txt" ] || [ -f "data/boxes/${key}_crosscheck.txt" ]; then
+    if [ "$(sort -n -k2 -k1 "data/boxes/${key}_stilllife.txt")" = "$(sort -n -k2 -k1 "data/boxes/${key}_crosscheck.txt")" ]; then pass "$key: both programs agree on every box"
+    else fail "$key: the two programs disagree on some box"; fi
+  elif [ -f "data/totals/${key}.txt" ]; then
+    # Terms computed in one run per program, without the split by box: both totals must be the term.
+    s=$(awk '$1 == "stilllife" {print $2}' "data/totals/${key}.txt")
+    c=$(awk '$1 == "crosscheck" {print $2}' "data/totals/${key}.txt")
+    if [ "$s" = "$want" ] && [ "$c" = "$want" ]; then pass "$key: both programs give $want in total (not split by box)"
+    else fail "$key: totals stilllife=${s:-none} crosscheck=${c:-none}, expected $want"; fi
+  else fail "$key: neither per-box counts nor totals in data/"; fi
+done < data/terms.txt
 # Each new term is also the value the b-file (what the OEIS serves) has at that index.
 while read -r key want; do
   [ -n "$key" ] || continue
